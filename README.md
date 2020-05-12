@@ -1,6 +1,6 @@
 
 # vagrant-k8s-single-cluster
-Build up a single kubernetes cluster with vagrant ( 1 master and 3 workers ) in VirtualBox.
+In this lab i build up a single kubernetes cluster with vagrant ( 1 master and 3 workers ) in VirtualBox.
 
 # How to use
 
