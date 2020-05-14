@@ -29,7 +29,7 @@ Vagrant.configure(2) do |config|
     config.vm.define "kube-worker#{i}" do |workernode|
       workernode.vm.box = "centos/7"
       workernode.vm.hostname = "kube-worker#{i}.lab.com"
-      workernode.vm.network "private_network", ip: "192.168.100.100#{i}"
+      workernode.vm.network "private_network", ip: "192.168.100.10#{i}"
       workernode.vm.provider "virtualbox" do |vm|
         vm.name = "kube-worker#{i}"
         vm.memory = 1024
