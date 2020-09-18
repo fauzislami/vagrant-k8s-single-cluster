@@ -17,7 +17,7 @@ Vagrant.configure(2) do |config|
       vm.memory = 2048
       vm.cpus = 2
       # Prevent VirtualBox from interfering with host audio stack
-      vm.customize ["modifyvm", :id, "--audio", "none"]
+      vm.customize ["modifyvm", :id, "--groups", "/kubernetes"]
     end
     masternode.vm.provision "shell", path: "bootstrap_kubemaster.sh"
   end
@@ -35,7 +35,7 @@ Vagrant.configure(2) do |config|
         vm.memory = 1024
         vm.cpus = 1
         # Prevent VirtualBox from interfering with host audio stack
-        vm.customize ["modifyvm", :id, "--audio", "none"]
+        vm.customize ["modifyvm", :id, "--groups", "/kubernetes"]
       end
       workernode.vm.provision "shell", path: "bootstrap_kubeworker.sh"
     end
