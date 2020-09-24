@@ -20,7 +20,7 @@ Vagrant.configure(2) do |config|
       # Grouping VM
       vm.customize ["modifyvm", :id, "--groups", "/kubernetes"]
       # Add promicuous mode to all VMs
-      vm.customize ["modifyvm", :id, "--nicpromisc3", "allow-all"]
+      vm.customize ["modifyvm", :id, "--nicpromisc2", "allow-all"]
     end
     masternode.vm.provision "shell", path: "bootstrap_kubemaster.sh"
   end
@@ -40,7 +40,7 @@ Vagrant.configure(2) do |config|
         # Prevent VirtualBox from interfering with host audio stack
         vm.customize ["modifyvm", :id, "--groups", "/kubernetes"]
       # Add promicuous mode to all VMs
-      vm.customize ["modifyvm", :id, "--nicpromisc3", "allow-all"]
+      vm.customize ["modifyvm", :id, "--nicpromisc2", "allow-all"]
       end
       workernode.vm.provision "shell", path: "bootstrap_kubeworker.sh"
     end
