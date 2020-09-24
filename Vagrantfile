@@ -11,7 +11,8 @@ Vagrant.configure(2) do |config|
   config.vm.define "kube-master" do |masternode|
     masternode.vm.box = "centos/7"
     masternode.vm.hostname = "kube-master.lab.com"
-    masternode.vm.network "private_network", ip: "192.168.56.100" #HostOnlyAdapter
+  #HostOnlyAdapter
+    masternode.vm.network "private_network", ip: "192.168.56.100" 
     masternode.vm.provider "virtualbox" do |vm|
       vm.name = "kube-master"
       vm.memory = 2048
@@ -38,6 +39,8 @@ Vagrant.configure(2) do |config|
         vm.cpus = 1
         # Prevent VirtualBox from interfering with host audio stack
         vm.customize ["modifyvm", :id, "--groups", "/kubernetes"]
+      # Add promicuous mode to all VMs
+      vm.customize ["modifyvm", :id, "--nicpromisc3", "allow-all"]
       end
       workernode.vm.provision "shell", path: "bootstrap_kubeworker.sh"
     end
