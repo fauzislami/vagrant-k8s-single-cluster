@@ -16,8 +16,10 @@ Vagrant.configure(2) do |config|
       vm.name = "kube-master"
       vm.memory = 2048
       vm.cpus = 2
-      # Prevent VirtualBox from interfering with host audio stack
+      # Grouping VM
       vm.customize ["modifyvm", :id, "--groups", "/kubernetes"]
+      # Add promicuous mode to all VMs
+      vm.customize ["modifyvm", :id, "--nicpromisc3", "allow-all"]
     end
     masternode.vm.provision "shell", path: "bootstrap_kubemaster.sh"
   end
