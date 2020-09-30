@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
     masternode.vm.box = "centos/7"
     masternode.vm.hostname = "kube-master.lab.com"
   #HostOnlyAdapter
-    masternode.vm.network "private_network", ip: "192.168.56.100" 
+    masternode.vm.network "private_network", ip: "10.10.10.10" 
     masternode.vm.provider "virtualbox" do |vm|
       vm.name = "kube-master"
       vm.memory = 2048
@@ -32,7 +32,7 @@ Vagrant.configure(2) do |config|
     config.vm.define "kube-worker#{i}" do |workernode|
       workernode.vm.box = "centos/7"
       workernode.vm.hostname = "kube-worker#{i}.lab.com"
-      workernode.vm.network "private_network", ip: "192.168.56.10#{i}"
+      workernode.vm.network "private_network", ip: "10.10.10.1#{i}"
       workernode.vm.provider "virtualbox" do |vm|
         vm.name = "kube-worker#{i}"
         vm.memory = 2048
